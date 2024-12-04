@@ -5,14 +5,18 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaService } from './prisma.service';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
-import { TrainsService } from './trains/trains.service';
-import { BookingsService } from './bookings/bookings.service';
-import { BookingsModule } from './bookings/bookings.module';
 import { TrainsModule } from './trains/trains.module';
+import { BookingsModule } from './bookings/bookings.module';
 
 @Module({
-  imports: [ConfigModule, AuthModule, UsersModule, BookingsModule, TrainsModule],
+  imports: [
+    ConfigModule,
+    AuthModule,
+    UsersModule,
+    TrainsModule,
+    BookingsModule,
+  ],
   controllers: [AppController],
-  providers: [AppService, PrismaService, TrainsService, BookingsService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}

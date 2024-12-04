@@ -19,7 +19,7 @@ enum UserRole {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
+  id        String    @id
   username  String    @unique
   email     String    @unique
   password  String
@@ -30,7 +30,7 @@ model User {
 }
 
 model Train {
-  id             Int       @id @default(autoincrement())
+  id             String    @id
   trainNumber    String    @unique
   source         String
   destination    String
@@ -43,14 +43,13 @@ model Train {
 }
 
 model Booking {
-  id         Int           @id @default(autoincrement())
-  user       User          @relation(fields: [userId], references: [id])
-  userId     Int
-  train      Train         @relation(fields: [trainId], references: [id])
-  trainId    Int
-  seatNumber Int
-  status     BookingStatus @default(CONFIRMED)
-  createdAt  DateTime      @default(now())
+  id        String        @id
+  user      User          @relation(fields: [userId], references: [id])
+  userId    String
+  train     Train         @relation(fields: [trainId], references: [id])
+  trainId   String
+  status    BookingStatus @default(CONFIRMED)
+  createdAt DateTime      @default(now())
 }
 
 enum BookingStatus {
