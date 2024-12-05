@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DB_NAME="irctc_assignment_db"
+DB_NAME="irctc_assignment_db_2"
 
 sudo -u postgres psql <<EOF
     CREATE DATABASE "$DB_NAME";
@@ -15,5 +15,5 @@ sudo -u postgres psql <<EOF
 EOF
 
     echo "Database created successfully!"
-
-yarn migrate:dev
+    echo "Connection string: "
+echo "postgresql://postgres:postgres@localhost:5432/$DB_NAME?schema=public"

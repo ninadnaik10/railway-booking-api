@@ -55,13 +55,19 @@ sudo chmod +x setup_db.sh
 ./setup_db.sh
 ```
 
-5. Copy .env.example file to .env and add environment variables
+5. Copy .env.example file to .env and add environment variables like postgres connection string
 
 ```
 cp .env.example .env
 ```
 
-6. Start the NestJS app
+6. Migrate DB
+
+```
+yarn migrate:dev
+```
+
+7. Start the NestJS app
 
 ```
 yarn dev
