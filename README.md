@@ -6,6 +6,14 @@ This application is developed for completing WorkIndia assignment.
 
 This app is a Railway management system like IRCTC where a user can check available trains between any 2 stations. Users can also book the seats if there are seats available in a train.
 
+### Features
+
+1. User creation
+2. Train creation (only allowed to Admins)
+3. Booking a seat
+4. Proper error handling and status code
+5. Only one user can do the booking at a given time
+
 ### Tech Stack Used
 
 1. **NestJS**: A Node.js framework for building scalable and reliable server-side applications using TypeScript.
