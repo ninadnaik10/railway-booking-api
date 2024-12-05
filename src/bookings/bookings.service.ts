@@ -1,4 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { BookingStatus, User } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 import { BookingData } from './types';
@@ -27,7 +31,7 @@ export class BookingsService {
         where: { id: booking.trainId },
       });
       if (!train) {
-        throw new Error('Train not found');
+        throw new NotFoundException('Train not found');
       }
       if (train.availableSeats > 0) {
         const booking = await this.prisma.booking.create({
@@ -47,14 +51,22 @@ export class BookingsService {
           where: { id: booking.trainId },
           data: { availableSeats: { decrement: 1 } },
         });
-        return booking;
+        return {
+          id: booking.id,
+          trainId: booking.trainId,
+          userId: booking.userId,
+          status: booking.status,
+        };
       }
       throw new ConflictException('No seats available');
     } catch (error) {
       if (error instanceof ConflictException) {
         throw error;
+      } else if (error instanceof NotFoundException) {
+        throw error;
+      } else {
+        throw error;
       }
-      throw Error(error);
     } finally {
       release();
     }
