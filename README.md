@@ -1,99 +1,121 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# IRCTC API app
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This application is developed for completing WorkIndia assignment.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Description
 
-## Description
+This app is a Railway management system like IRCTC where a user can check available trains between any 2 stations. Users can also book the seats if there are seats available in a train.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Tech Stack Used
 
-## Project setup
+1. **NestJS**: A Node.js framework for building scalable and reliable server-side applications using TypeScript.
+2. **PostgreSQL**: An open source relational database for building complex applications.
+3. **Prisma ORM**: An Object-Relational Mappers (ORM) tool for Node.js application that simplifies database interactions.
+4. **Postman**: A platform for API development.
 
-```bash
-$ yarn install
+### Motivation for using this tech stack
+
+As the assignment instructed to use any web server of our choice, I chose NestJS which is Node.js framework that helps to structure the web applications in various modules and give inbuilt functionality for creating API endpoint, database ORM configuration for Prisma and easy access control features. I am comfortable with NestJS as I have worked on it in my past internship.
+
+I am using Postgres as the relational database for its flexibility and scalability features.
+
+Prisma ORM simplifies database interaction by creating models and directing managing the database connections.
+
+To ensure originality and avoid any concerns about plagiarism, the project repository is hosted on GitLab: https://gitlab.com/ninadnaik07/irctc-app
+
+You can also view my other projects on GitHub to see my coding style and experience: https://github.com/ninadnaik10
+
+### Setup
+
+1. Prerequisites
+
+- Node.js (v18 or above)
+- yarn
+- Git
+- Postgres (either locally or via Docker)
+- Bash shell
+
+2. Clone this repository
+
+```
+git clone https://gitlab.com/ninadnaik07/irctc-app.git
+cd irctc-app
 ```
 
-## Compile and run the project
+3. Run yarn to install packages
 
-```bash
-# development
-$ yarn run start
-
-# watch mode
-$ yarn run start:dev
-
-# production mode
-$ yarn run start:prod
+```
+yarn
 ```
 
-## Run tests
+4. Run setup_db script
 
-```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+```
+sudo chmod +x setup_db.sh
+./setup_db.sh
 ```
 
-## Deployment
+5. Copy .env.example file to .env and add environment variables
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ yarn install -g mau
-$ mau deploy
+```
+cp .env.example .env
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+6. Start the NestJS app
 
-## Resources
+```
+yarn dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+### Run APIs through Postman
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Copy this postman collection to your account. Edit the host variable to `http://localhost:3000`. Run requests given in the collection.
 
-## Support
+[<img src="https://run.pstmn.io/button.svg" alt="Run In Postman" style="width: 128px; height: 32px;">](https://app.getpostman.com/run-collection/20169910-f073a8cd-3860-4538-9fbb-2480a48792de?action=collection%2Ffork&source=rip_markdown&collection-url=entityId%3D20169910-f073a8cd-3860-4538-9fbb-2480a48792de%26entityType%3Dcollection%26workspaceId%3D8cf17d2d-eb90-4a70-9229-54856dbf3496)
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Application file structure
 
-## Stay in touch
+Generated using `tree` command.
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```
+.
+├── nest-cli.json
+├── package.json
+├── prisma
+│   └── schema.prisma
+├── README.md
+├── setup_db.sh
+├── src
+│   ├── app.controller.ts
+│   ├── app.module.ts
+│   ├── app.service.ts
+│   ├── auth
+│   │   ├── auth.controller.ts
+│   │   ├── auth.module.ts
+│   │   ├── auth.service.ts
+│   │   ├── guards
+│   │   │   ├── admin.guard.ts
+│   │   │   ├── api-key.guard.ts
+│   │   │   └── auth.guard.ts
+│   │   └── types.ts
+│   ├── bookings
+│   │   ├── bookings.controller.ts
+│   │   ├── bookings.module.ts
+│   │   ├── bookings.service.ts
+│   │   └── types.ts
+│   ├── main.ts
+│   ├── prisma.service.ts
+│   ├── trains
+│   │   ├── trains.controller.ts
+│   │   ├── trains.module.ts
+│   │   └── trains.service.ts
+│   └── users
+│       ├── types.ts
+│       ├── users.module.ts
+│       └── users.service.ts
+├── tsconfig.build.json
+├── tsconfig.json
+└── yarn.lock
 
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+8 directories, 31 files
+```
