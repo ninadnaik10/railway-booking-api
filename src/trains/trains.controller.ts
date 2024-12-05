@@ -11,6 +11,7 @@ import {
 import { TrainsService } from './trains.service';
 import { Train } from '@prisma/client';
 import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
+import { AuthGuard } from 'src/auth/guards/auth.guard';
 
 @Controller('trains')
 export class TrainsController {
@@ -29,6 +30,7 @@ export class TrainsController {
     return await this.trainsService.addTrain(train);
   }
 
+  @UseGuards(AuthGuard)
   @Post('/available-trains')
   @HttpCode(HttpStatus.OK)
   async getAvailableTrains(
