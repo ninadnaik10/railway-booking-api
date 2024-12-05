@@ -23,8 +23,8 @@ export class AuthService {
   ) {}
   async validateUser(input: LoginInput): Promise<SignInData | null> {
     const user = await this.usersService.findOne(input.email);
-    if (user && (await bcrypt.compare(input.password, user.hashedPassword))) {
-      return user;
+    if (user && (await bcrypt.compare(input.password, user.password))) {
+      return { userId: user.id, email: user.email };
     }
     return null;
   }
@@ -37,8 +37,8 @@ export class AuthService {
     return this.signIn(user);
   }
 
-  async register(input: RegisterInput): Promise<AuthResult> {
-    const userId = await this.usersService.createUser(input);
+  async register(input: RegisterInput, isAdmin = false): Promise<AuthResult> {
+    const userId = await this.usersService.createUser(input, isAdmin);
     // const user = await this.usersService.findOne(input.email);
     return this.signIn({ userId, email: input.email });
   }
@@ -55,5 +55,10 @@ export class AuthService {
       userId: user.userId,
       email: user.email,
     };
+  }
+
+  async registerAdmin(input: RegisterInput): Promise<AuthResult> {
+    const userId = await this.usersService.createUser(input);
+    return this.signIn({ userId, email: input.email });
   }
 }

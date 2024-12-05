@@ -6,9 +6,11 @@ import {
   BadRequestException,
   HttpStatus,
   HttpCode,
+  UseGuards,
 } from '@nestjs/common';
 import { TrainsService } from './trains.service';
 import { Train } from '@prisma/client';
+import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
 
 @Controller('trains')
 export class TrainsController {
@@ -20,11 +22,13 @@ export class TrainsController {
     return await this.trainsService.findAll();
   }
 
+  @UseGuards(ApiKeyGuard)
   @Post('/add')
   @HttpCode(HttpStatus.CREATED)
   async addTrain(@Body() train: Train) {
     return await this.trainsService.addTrain(train);
   }
+
   @Post('/available-trains')
   @HttpCode(HttpStatus.OK)
   async getAvailableTrains(
