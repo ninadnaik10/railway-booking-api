@@ -9,7 +9,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { TrainsService } from './trains.service';
-import { Train } from '@prisma/client';
+import { Prisma, Train } from '@prisma/client';
 import { ApiKeyGuard } from 'src/auth/guards/api-key.guard';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 
@@ -34,7 +34,20 @@ export class TrainsController {
   @Post('/available-trains')
   @HttpCode(HttpStatus.OK)
   async getAvailableTrains(
-    @Body() { source, destination }: { source: string; destination: string },
+    @Body()
+    {
+      source,
+      destination,
+      orderBy,
+      page,
+      pageSize,
+    }: {
+      source: string;
+      destination: string;
+      orderBy?: Prisma.UserOrderByWithRelationInput;
+      page?: number;
+      pageSize?: number;
+    },
   ) {
     if (!source || !destination) {
       throw new BadRequestException('Source and destination are required');
@@ -43,6 +56,9 @@ export class TrainsController {
       return await this.trainsService.getAvailableTrains({
         source,
         destination,
+        orderBy: orderBy || {},
+        page: page || 1,
+        pageSize: pageSize || 10,
       });
     } catch (error) {
       throw new Error(error);

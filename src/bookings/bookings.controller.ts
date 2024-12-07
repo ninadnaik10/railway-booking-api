@@ -28,6 +28,7 @@ export class BookingsController {
 
   @UseGuards(AuthGuard)
   @Get('/:id')
+  @HttpCode(HttpStatus.OK)
   async getBooking(@Param('id') id: string, @Request() req) {
     return await this.bookingsService.getBooking(id, req.user);
   }
