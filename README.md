@@ -1,6 +1,4 @@
-# IRCTC API app
-
-This application is developed for completing WorkIndia assignment.
+# Railway Booking system API
 
 ### Description
 
@@ -23,15 +21,11 @@ This app is a Railway management system like IRCTC where a user can check availa
 
 ### Motivation for using this tech stack
 
-As the assignment instructed to use any web server of our choice, I chose NestJS which is Node.js framework that helps to structure the web applications in various modules and give inbuilt functionality for creating API endpoint, database ORM configuration for Prisma and easy access control features. I am comfortable with NestJS as I have worked on it in my past internship.
+As the assignment instructed to use any web server of our choice, I chose NestJS which is Node.js framework that helps to structure the web applications in various modules and give inbuilt functionality for creating API endpoint, database ORM configuration for Prisma and easy access control features.
 
 I am using Postgres as the relational database for its flexibility and scalability features.
 
 Prisma ORM simplifies database interaction by creating models and directing managing the database connections.
-
-To ensure originality and avoid any concerns about plagiarism, the project repository is hosted on GitLab: https://gitlab.com/ninadnaik07/irctc-app
-
-You can also view my other projects on GitHub to see my coding style and experience: https://github.com/ninadnaik10
 
 ### Setup
 
@@ -46,8 +40,8 @@ You can also view my other projects on GitHub to see my coding style and experie
 2. Clone this repository
 
 ```
-git clone https://gitlab.com/ninadnaik07/irctc-app.git
-cd irctc-app
+git clone https://github.com/ninadnaik07/railway-booking-api.git
+cd railway-booking-api
 ```
 
 3. Run yarn to install packages
